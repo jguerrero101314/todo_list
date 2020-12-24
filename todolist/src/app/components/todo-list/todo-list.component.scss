@@ -1,0 +1,35 @@
+.main {
+    width: 100%;
+    background-color: #9cb1a033;
+    max-width: 50%;
+    box-shadow: 8px 6px#858181;
+    border-radius: 20px;
+    padding: 0;
+    min-height: 350px;
+    min-width: 400px;
+    .main-container {
+        margin: 2%;
+        .header,
+        .inputDiv {
+            display: flex;
+            justify-content: center;
+            i.fa-plus-circle {
+                font-size: 1.5em;
+            }
+        }
+    }
+}
+
+h1 {
+    font-family: 'Patrick Hand', cursive;
+}
+
+.addInput {
+    max-width: 500px;
+    line-height: 2em;
+    margin: 10px;
+}
+
+.main {
+    margin-top: 5em;
+}
