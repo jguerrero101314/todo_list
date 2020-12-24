@@ -1,0 +1,22 @@
+.content {
+    ul>li {
+        display: grid;
+        grid-template-columns: 1fr .7fr .2fr 0fr;
+    }
+    li {
+        background-color: #ffffff85;
+        margin: 4px;
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        line-height: 1.5em;
+        border-radius: 10px;
+        width: 57%;
+        margin-left: 150px;
+        div {
+            .listBtn {
+                margin: 2px;
+            }
+        }
+    }
+}

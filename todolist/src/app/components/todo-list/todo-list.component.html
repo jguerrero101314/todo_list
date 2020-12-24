@@ -4,9 +4,10 @@
             <h1>TODO LIST <i class="fas fa-pencil-alt mt-4"></i></h1>
         </div>
         <div class="inputDiv">
-            <input type="text" class="form-control addInput" placeholder="Things you want to do today?">
-            <i class="fas fa-plus-circle mt-3"></i>
+            <input type="text" class="form-control addInput" name="title" placeholder="Things you want to do today?" [(ngModel)]="newTask.title">
+            <button type="submit" class="btn" (click)="addTasks()"><i class="fas fa-plus-circle"></i></button>
         </div>
 
+        <app-list-task></app-list-task>
     </div>
 </div>

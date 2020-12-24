@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskService} from '../../services/task.service';
+
 
 @Component({
   selector: 'app-todo-list',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoListComponent implements OnInit {
 
-  constructor() { }
+  myId = 0;
+  newTask = {
+    id: this.myId,
+    title:''
+  }
+
+  constructor( private listService: TaskService) { }
 
   ngOnInit(): void {
+  }
+  addTasks(){
+    // console.log("enviando tarea", this.newTask);
+    // this.listService.addTask(this.newTask.title).then(resp=>{
+    //   console.log(resp);
+
+    // }).catch(error => {
+    //     console.error(error);
+    // })
+    
   }
 
 }

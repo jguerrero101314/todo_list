@@ -1,0 +1,11 @@
+<div class="content">
+    <ul>
+        <li *ngFor="let task of notes">
+            <p> {{task.data.title}}</p>
+            <div>
+                <button class="btn btn-success listBtn "><i class="fa fa-edit"></i> Edit</button>
+                <button class="btn btn-danger listBtn ml-2"><i class="fa fa-trash"> </i> Del</button>
+            </div>
+        </li>
+    </ul>
+</div>

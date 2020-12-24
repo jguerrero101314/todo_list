@@ -13,8 +13,13 @@
         .inputDiv {
             display: flex;
             justify-content: center;
-            i.fa-plus-circle {
-                font-size: 1.5em;
+            button {
+                height: 2.4em;
+                margin-top: 0.5em;
+                background-color: #000;
+                i {
+                    color: #fff;
+                }
             }
         }
     }

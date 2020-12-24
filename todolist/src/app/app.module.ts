@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 // components
 
@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
 
 import { environment } from '../environments/environment';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
+import { ListTaskComponent } from './components/list-task/list-task.component';
 
 
 
@@ -25,7 +26,8 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 @NgModule({
   declarations: [
     AppComponent,
-    TodoListComponent
+    TodoListComponent,
+    ListTaskComponent
 
   ],
   imports: [
@@ -33,7 +35,7 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
