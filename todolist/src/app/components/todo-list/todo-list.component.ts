@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
-import { Task } from '../../models/taks';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-list',
@@ -12,13 +10,8 @@ export class TodoListComponent implements OnInit {
 
 
   taskTitle: string;
-  taskId: number;
-  tasks:Task[] = [];
 
-  constructor(private listService: TaskService) {
-
-
-  }
+  constructor(private listService: TaskService) {}
 
   ngOnInit(): void {
     this.taskTitle = '';
@@ -32,11 +25,7 @@ export class TodoListComponent implements OnInit {
         .then(resp => {
           console.log(resp);
         });
-        this.tasks.push({
-            id:this.taskId,
-            title: this.taskTitle,
-
-        })
+ 
         this.taskTitle ='';
         this.ngOnInit();
 }
