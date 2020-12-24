@@ -12,7 +12,6 @@ import {
 })
 export class TaskService {
 
-  private itemsCollection: AngularFirestoreCollection<Task>;
 
   public TaskList: Task[] = [];
 
@@ -22,23 +21,16 @@ export class TaskService {
   getTask(){
     return this.afs.collection('note').snapshotChanges();
   }
-  // getOneTask(_id:number){
-  //   return TaskList.find(task => task.id === _id)
-  // }
 
-  addTask(data: {title: string, id: number}){
+ 
+  public addTask(data: {title: string}) {
     return this.afs.collection('note').add(data);
-
   }
 
    editTask(documentId: string, data: any) {
     return this.afs.collection('note').doc(documentId).set(data);
   }
   
-
-  // editTask(_id:any, title:string){
-  //   return  this.afs.collection("title").doc(_id).update(title);
-  // }
   // deleteTask(_id:any){
   //   return   this.afs.collection("title").doc(_id).delete();
   // }
