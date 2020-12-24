@@ -1,0 +1,11 @@
+{
+    "hosting": {
+        "site": "todolist-8b7ba",
+        "public": "public",
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+        ]
+    }
+}
