@@ -1,4 +1,6 @@
 export interface Task{
-    id: number;
-    title: string
+  data:{
+      title: string
+  },
+  id: string
 }
