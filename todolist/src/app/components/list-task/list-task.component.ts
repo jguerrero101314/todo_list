@@ -26,4 +26,14 @@ export class ListTaskComponent implements OnInit {
     });
   }
 
+   deleteTask(id:string) {
+     console.log('id',id);
+     this.listServices.deleteTask(id).then( () => {
+       console.log('id: ' + id);
+       console.log('eliminado: ');
+     }).catch(err => {
+       console.log(err);
+     })
+  }
+
 }

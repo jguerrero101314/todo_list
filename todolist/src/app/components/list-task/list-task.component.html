@@ -4,7 +4,7 @@
             <p> {{task.data.title}}</p>
             <div>
                 <button class="btn btn-success listBtn "><i class="fa fa-edit"></i> Edit</button>
-                <button class="btn btn-danger listBtn ml-2"><i class="fa fa-trash"> </i> Del</button>
+                <button class="btn btn-danger listBtn ml-2" (click)="deleteTask(task.id)"><i class="fa fa-trash"> </i> Del</button>
             </div>
         </li>
     </ul>

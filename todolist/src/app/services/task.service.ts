@@ -23,7 +23,7 @@ export class TaskService {
   }
 
  
-  public addTask(data: {title: string}) {
+   addTask(data: {title: string}) {
     return this.afs.collection('note').add(data);
   }
 
@@ -31,7 +31,8 @@ export class TaskService {
     return this.afs.collection('note').doc(documentId).set(data);
   }
   
-  // deleteTask(_id:any){
-  //   return   this.afs.collection("title").doc(_id).delete();
-  // }
+  deleteTask(_id:any){
+    console.log('service:',_id);
+    return   this.afs.collection("note").doc(_id).delete();
+  }
 }
