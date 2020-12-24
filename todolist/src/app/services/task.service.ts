@@ -27,8 +27,11 @@ export class TaskService {
     return this.afs.collection('note').add(data);
   }
 
-   editTask(documentId: string, title: string) {
-    return this.afs.collection('note').doc(documentId).set(title);
+   editTask(data: {_id:string, title: string}) {
+    //  console.log('_id',data._id);
+    //  console.log('title',data.title);
+    return this.afs.collection('note').doc(data._id).set(data.title);
+   
   }
   
   deleteTask(_id:any){

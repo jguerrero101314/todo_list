@@ -10,7 +10,8 @@ import { Task } from '../../models/taks';
 export class ListTaskComponent implements OnInit {
 
   public notes:any[] = [];
-  EditartaskTitle:any={title:''};
+ // EditartaskTitle:any={title:''};
+  EditartaskTitle: string;
   constructor( private listServices: TaskService) { }
 
   ngOnInit() {
@@ -25,13 +26,26 @@ export class ListTaskComponent implements OnInit {
         console.log(this.notes);
       })
     });
+    this.EditartaskTitle = '';
   }
 
   editTask(task:any){
     console.log('task',task.data.title);
     this.EditartaskTitle=task.data.title;
 
+    if(this.EditartaskTitle.trim().length === 0)return;
+    
+    
+    this.listServices.editTask(task)
+      .then(resp => {
+        console.log(resp);
+      }).catch(err => {
+        console.log(err);
+      })
+    
+
   }
+
    deleteTask(id:string) {
      console.log('id',id);
      this.listServices.deleteTask(id).then( () => {
