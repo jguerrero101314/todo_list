@@ -6,11 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterPipe implements PipeTransform {
 
   transform(value: any, arg: any): any {
+    if (arg === '') return value;
     const resultNotes= [];
     for(const notes of value){
-      if(notes.data.title.indexOf(arg) > -1){
-         resultNotes.push(notes);
-        console.log("si");
+      if (notes.data.title.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
+             resultNotes.push(notes);
       };
     };
     return resultNotes;
