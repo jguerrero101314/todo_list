@@ -3,7 +3,7 @@
         <li *ngFor="let task of notes; let i = index">
             <p> {{task.data.title}}</p>
             <div>
-                <button class="btn btn-success listBtn " (click)="editTask(task)" data-bs-toggle="modal" data-bs-target="#editarModal"><i class="fa fa-edit"></i> Edit</button>
+                <button class="btn btn-success listBtn " (click)="editTask(task)" (click)="open(content)" data-bs-toggle="modal" data-bs-target="#editarModal"><i class="fa fa-edit"></i> Edit</button>
                 <button class="btn btn-danger listBtn ml-2" (click)="deleteTask(task.id)"><i class="fa fa-trash"> </i> Del</button>
             </div>
         </li>
@@ -11,7 +11,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="EditarModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="EditarModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -27,4 +27,22 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Edit Note:</h4>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control addInput" name="title" placeholder="Things you want to do today?" [(ngModel)]="editartaskTitle">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" (click)="editTaskForm()">Save</button>
+    </div>
+</ng-template>

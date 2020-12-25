@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-list-task',
@@ -11,9 +12,9 @@ export class ListTaskComponent implements OnInit {
   editartaskTitle: any = {};
   taskId: string = '';
 
+  closeResult = '';
 
-
-  constructor(private listServices: TaskService) {}
+  constructor(private listServices: TaskService, private modalService: NgbModal) {}
 
   ngOnInit() {
     this.listServices.getTask().subscribe((notesSnapshot) => {
@@ -37,8 +38,6 @@ export class ListTaskComponent implements OnInit {
     const taskEdit = this.notes.find((item) => item.id === this.taskId);
     taskEdit.data.title = this.editartaskTitle;
     this.listServices.updateTask(taskEdit);
-
-   
   }
 
   deleteTask(id: string) {
@@ -49,5 +48,12 @@ export class ListTaskComponent implements OnInit {
       .catch((err) => {
         console.log(err);
       });
+  }
+  open(content:any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.editTaskForm()}`;
+    });
   }
 }
