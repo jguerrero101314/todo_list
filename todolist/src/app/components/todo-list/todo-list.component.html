@@ -1,4 +1,7 @@
-<div class="container main">
+<div class="container main w-100">
+    <div class="nav">
+        <input type="text" class="form-control addInputSearch" name="filterNotes" placeholder="Search..." [(ngModel)]="filterNotes">
+    </div>
     <div class="main-container">
         <div class="header ">
             <h1>Add Note <i class="fas fa-pencil-alt mt-4"></i></h1>
@@ -7,7 +10,6 @@
             <input type="text" class="form-control addInput" name="title" placeholder="Things you want to do today?" [(ngModel)]="taskTitle" (keyup.enter)="addTasks()">
             <button type="submit" class="btn" (click)="addTasks()"><i class="fas fa-plus-circle"></i></button>
         </div>
-
-        <app-list-task></app-list-task>
+        <app-list-task [filterNotes]="filterNotes"></app-list-task>
     </div>
 </div>

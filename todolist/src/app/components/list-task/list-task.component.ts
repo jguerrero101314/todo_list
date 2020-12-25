@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
@@ -13,6 +13,9 @@ export class ListTaskComponent implements OnInit {
   taskId: string = '';
 
   closeResult = '';
+  // filterNotes = '';
+
+  @Input () filterNotes: string = "";
 
   constructor(private listServices: TaskService, private modalService: NgbModal) {}
 

@@ -19,6 +19,7 @@ import { environment } from '../environments/environment';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { ListTaskComponent } from './components/list-task/list-task.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 
@@ -28,7 +29,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     TodoListComponent,
-    ListTaskComponent
+    ListTaskComponent,
+    FilterPipe
 
   ],
   imports: [

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 
 @Component({
@@ -10,6 +10,11 @@ export class TodoListComponent implements OnInit {
 
 
   taskTitle: string;
+  public notes: any[] = [];
+
+ 
+    filterNotes = '';
+  // @Input () filterNotes: string;
 
   constructor(private listService: TaskService) {}
 
@@ -28,6 +33,5 @@ export class TodoListComponent implements OnInit {
  
         this.taskTitle ='';
         this.ngOnInit();
-}
-  
+ }  
 }

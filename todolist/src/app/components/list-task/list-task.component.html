@@ -1,6 +1,6 @@
-<div class="content">
+<div class="content col-md-12">
     <ul>
-        <li *ngFor="let task of notes; let i = index">
+        <li *ngFor="let task of notes | filter:filterNotes">
             <p> {{task.data.title}}</p>
             <div>
                 <button class="btn btn-success listBtn " (click)="editTask(task)" (click)="open(content)" data-bs-toggle="modal" data-bs-target="#editarModal"><i class="fa fa-edit"></i> Edit</button>
