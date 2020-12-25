@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-task',
@@ -15,9 +16,12 @@ export class ListTaskComponent implements OnInit {
   closeResult = '';
   // filterNotes = '';
 
-  @Input () filterNotes: string = "";
+  @Input() filterNotes: string = '';
 
-  constructor(private listServices: TaskService, private modalService: NgbModal) {}
+  constructor(
+    private listServices: TaskService,
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit() {
     this.listServices.getTask().subscribe((notesSnapshot) => {
@@ -44,19 +48,41 @@ export class ListTaskComponent implements OnInit {
   }
 
   deleteTask(id: string) {
-    console.log('id', id);
-    this.listServices
-      .deleteTask(id)
-      .then(() => {})
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-  open(content:any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.editTaskForm()}`;
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to retrieve this value!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it',
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        );
+        this.listServices
+          .deleteTask(id)
+          .then(() => {})
+          .catch((err) => {
+            console.log(err);
+          });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'I was not eliminated ah :)', 'error');
+      }
     });
+  }
+  open(content: any) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        () => {
+          this.closeResult = `Dismissed ${this.editTaskForm()}`;
+        }
+      );
   }
 }

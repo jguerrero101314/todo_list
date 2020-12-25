@@ -1,15 +1,28 @@
 <div class="content col-md-12">
-    <ul>
-        <li *ngFor="let task of notes | filter:filterNotes">
-            <p> {{task.data.title}}</p>
-            <div>
-                <button class="btn btn-success listBtn " (click)="editTask(task)" (click)="open(content)" data-bs-toggle="modal" data-bs-target="#editarModal"><i class="fa fa-edit"></i> Edit</button>
-                <button class="btn btn-danger listBtn ml-2" (click)="deleteTask(task.id)"><i class="fa fa-trash"> </i> Del</button>
-            </div>
-        </li>
-    </ul>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titulo</th>
+                <th scope="col"></th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of notes | filter:filterNotes; let indice=index">
+                <th>{{indice+1}}</th>
+                <td>{{task.data.title}}</td>
+                <td></td>
+                <td>
+                    <div>
+                        <button class="btn btn-success listBtn " (click)="editTask(task)" (click)="open(content)" data-bs-toggle="modal" data-bs-target="#editarModal"><i class="fa fa-edit"></i> Edit</button>
+                        <button class="btn btn-danger listBtn ml-2" (click)="deleteTask(task.id)"><i class="fa fa-trash"> </i> Del</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-
 <ng-template #content let-modal>
     <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Edit Note:</h4>
