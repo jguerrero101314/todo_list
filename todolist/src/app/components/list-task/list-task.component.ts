@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
-import { Task } from '../../models/taks';
 
 @Component({
   selector: 'app-list-task',
@@ -9,7 +8,11 @@ import { Task } from '../../models/taks';
 })
 export class ListTaskComponent implements OnInit {
   public notes: any[] = [];
-  EditartaskTitle: any = { id: '', title: '' };
+  editartaskTitle: any = {};
+  taskId: string = '';
+
+
+
   constructor(private listServices: TaskService) {}
 
   ngOnInit() {
@@ -20,32 +23,29 @@ export class ListTaskComponent implements OnInit {
           id: noteData.payload.doc.id,
           data: noteData.payload.doc.data(),
         });
-        console.log('notes', this.notes);
       });
     });
-    this.EditartaskTitle = '';
+    this.editartaskTitle = '';
   }
 
   editTask(task: any) {
-    this.EditartaskTitle = task.data.title;
+    this.taskId = task.id;
+    this.editartaskTitle = task.data.title;
   }
 
-  editTaskForm(task: any) {
-    let notes = this.notes;
-    for (var i = 0; i < notes.length; i++) {
-      notes[i].data.title = task;
-      this.listServices.updateTask(this.notes);
-     }
+  editTaskForm() {
+    const taskEdit = this.notes.find((item) => item.id === this.taskId);
+    taskEdit.data.title = this.editartaskTitle;
+    this.listServices.updateTask(taskEdit);
+
+   
   }
 
   deleteTask(id: string) {
     console.log('id', id);
     this.listServices
       .deleteTask(id)
-      .then(() => {
-        console.log('id: ' + id);
-        console.log('eliminado: ');
-      })
+      .then(() => {})
       .catch((err) => {
         console.log(err);
       });

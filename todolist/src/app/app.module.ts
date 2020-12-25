@@ -18,6 +18,7 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { ListTaskComponent } from './components/list-task/list-task.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -36,7 +37,8 @@ import { ListTaskComponent } from './components/list-task/list-task.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],
