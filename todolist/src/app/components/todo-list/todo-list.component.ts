@@ -14,7 +14,6 @@ export class TodoListComponent implements OnInit {
 
  
     filterNotes = '';
-  // @Input () filterNotes: string;
 
   constructor(private listService: TaskService) {}
 

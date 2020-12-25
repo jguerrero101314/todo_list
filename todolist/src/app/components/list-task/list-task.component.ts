@@ -14,8 +14,7 @@ export class ListTaskComponent implements OnInit {
   taskId: string = '';
 
   closeResult = '';
-  // filterNotes = '';
-
+  
   @Input() filterNotes: string = '';
 
   constructor(

@@ -1,21 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../models/taks';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-  AngularFirestoreDocument,
-} from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
 
-export interface Item {
-  title: string;
-}
+import {
+  AngularFirestore
+} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  public TaskList: Task[] = [];
+
 
   constructor(private afs: AngularFirestore) {}
 
